@@ -36,7 +36,7 @@ def main(page):
             score = f"{match_result[0].text.strip()} - {match_result[1].text.strip()}"
 
             #get matches time 
-            match_time = all_matches[i].find('div', class_='MResult').find('span', class_='time')
+            match_time = all_matches[i].find('div', class_='MResult').find('span', class_='time').text.strip()
 
             #save them in match_detail list
             matches_detail.append({
@@ -49,7 +49,15 @@ def main(page):
 
     for i in range(number_of_championships):
         scraping_match_info(championships[i])    
+    
+    keys = matches_detail[0].keys()
 
+    with open('C:/Users/nooro/OneDrive/Desktop/matchs_file.csv', 'w', encoding='UTF-8') as matches_file:
 
+        dict_writer = csv.DictWriter(matches_file, keys)
+        dict_writer.writeheader()
+        dict_writer.writerows(matches_detail)
+        print("file created successfully")
 
+    print(matches_detail)
 main(page=page)
