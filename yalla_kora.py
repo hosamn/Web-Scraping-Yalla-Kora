@@ -52,7 +52,7 @@ def main(page):
     
     keys = matches_detail[0].keys()
 
-    with open('C:/Users/nooro/OneDrive/Desktop/matchs_file.csv', 'w', encoding='UTF-8') as matches_file:
+    with open('matchs_file.csv', 'w', encoding='UTF-8') as matches_file:
 
         dict_writer = csv.DictWriter(matches_file, keys)
         dict_writer.writeheader()
